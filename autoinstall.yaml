@@ -1,0 +1,22 @@
+autoinstall:
+  version: 1
+  update:
+    update: yes
+  identity:
+    hostname: ubuntu24
+    username: shk
+    password: "$5$OXc7m7YTvUkQtpfg$rOTYGgw/6aytPZQ.ky1PAY83XEH6D0gy7ub6x3YouN."
+  locale: en_US
+  keyboard:
+    layout: us
+    variant: ""
+  storage:
+    layout:
+      name: lvm
+  snaps:
+    - name: code
+      classic: true
+  late-commands:
+  - curtin in-target -- apt update
+  - curtin in-target -- apt upgrade
+
