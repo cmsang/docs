@@ -1,5 +1,7 @@
 autoinstall:
   version: 1
+  update:
+    update: yes
   identity:
     hostname: ubuntu24
     username: shk
@@ -14,7 +16,4 @@ autoinstall:
   snaps:
     - name: code
       classic: true
-  late-commands:
-  - curtin in-target -- apt update
-  - curtin in-target -- apt upgrade
 
