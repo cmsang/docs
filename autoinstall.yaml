@@ -21,4 +21,18 @@ autoinstall:
   snaps:
     - name: code
       classic: true
-
+      
+  late-commands:
+    - gsettings set org.gnome.desktop.interface enable-animations false,
+    - gsettings set org.gnome.desktop.session idle-delay 0,
+    - gsettings set org.gnome.nautilus.preferences show-hidden-files true,
+    - gsettings set org.gnome.shell favorite-apps \['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'gnome-terminal.desktop']\,
+    - gsettings set org.gnome.shell.extensions.ding show-home false,
+    - gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
+    - sudo cloud-init clean,
+    - sudo apt -y autoremove --purge,
+    - sudo apt -y clean,
+    - sudo apt -y autoclean,
+    - sudo rm -f /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg,
+    - sudo rm -f /etc/netplan/00-installer-config.yaml,
+    - sudo sync
