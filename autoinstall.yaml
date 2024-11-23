@@ -15,6 +15,7 @@ autoinstall:
       name: lvm
   packages:
     - qemu-guest-agent
+    - cloud-init
     - curl
     - net-tools
   snaps:
