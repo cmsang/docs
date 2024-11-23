@@ -1,18 +1,16 @@
 autoinstall:
   version: 1
-  update:
-    update: yes
+  refresh-installer:
+   update: true
+  updates: security
   identity:
     hostname: ubuntu24
     username: shk
     password: "$5$OXc7m7YTvUkQtpfg$rOTYGgw/6aytPZQ.ky1PAY83XEH6D0gy7ub6x3YouN."
   locale: en_US
-  keyboard:
-    layout: us
-    variant: ""
-  storage:
-    layout:
-      name: lvm
+  timezone: "Asia/Ho_Chi_Minh"
+  ssh:
+    install-server: true
   packages:
     - qemu-guest-agent
     - curl
@@ -22,17 +20,17 @@ autoinstall:
       classic: true
 
   late-commands:
-  
-    - sudo apt remove --purge libreoffice*
-    - sudo apt update -y
-    - sudo apt upgrade -y
-    - gsettings set org.gnome.desktop.interface enable-animations false,
-    - gsettings set org.gnome.desktop.session idle-delay 0,
-    - gsettings set org.gnome.nautilus.preferences show-hidden-files true,
-    - gsettings set org.gnome.shell favorite-apps \['org.gnome.Nautilus.desktop', 'gnome-terminal.desktop']\,
-    - gsettings set org.gnome.shell.extensions.ding show-home false,
-    - gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
-    - sudo apt -y autoremove --purge,
-    - sudo apt -y clean,
-    - sudo apt -y autoclean,
+    - while [ ! -f /run/finish-late ]; do sleep 1; done
+    - curtin in-target -- sudo apt remove --purge libreoffice*
+    - curtin in-target -- sudo apt update -y
+    - curtin in-target -- sudo apt upgrade -y
+    - curtin in-target -- gsettings set org.gnome.desktop.interface enable-animations false,
+    - curtin in-target -- gsettings set org.gnome.desktop.session idle-delay 0,
+    - curtin in-target -- gsettings set org.gnome.nautilus.preferences show-hidden-files true,
+    - curtin in-target -- gsettings set org.gnome.shell favorite-apps \['org.gnome.Nautilus.desktop', 'gnome-terminal.desktop']\,
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-home false,
+    - curtin in-target -- gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
+    - curtin in-target -- sudo apt -y autoremove --purge,
+    - curtin in-target -- sudo apt -y clean,
+    - curtin in-target -- sudo apt -y autoclean,
     - sudo sync
