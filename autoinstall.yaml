@@ -20,7 +20,7 @@ autoinstall:
       classic: true
 
   late-commands:
-    - while [ ! -f /run/finish-late ]; do sleep 1; done
+    - sleep 180
     - curtin in-target -- sudo apt remove --purge libreoffice*
     - curtin in-target -- sudo apt update -y
     - curtin in-target -- sudo apt upgrade -y
