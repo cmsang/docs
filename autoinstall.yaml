@@ -22,7 +22,10 @@ autoinstall:
       classic: true
 
   late-commands:
+  
     - sudo apt remove --purge libreoffice*
+    - sudo apt update -y
+    - sudo apt upgrade -y
     - gsettings set org.gnome.desktop.interface enable-animations false,
     - gsettings set org.gnome.desktop.session idle-delay 0,
     - gsettings set org.gnome.nautilus.preferences show-hidden-files true,
