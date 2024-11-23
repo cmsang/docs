@@ -13,6 +13,8 @@ autoinstall:
   storage:
     layout:
       name: lvm
+  packages:
+    - qemu-guest-agent
   snaps:
     - name: code
       classic: true
