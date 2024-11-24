@@ -27,7 +27,7 @@ autoinstall:
     - curtin in-target -- gsettings set org.gnome.desktop.interface enable-animations false
     - curtin in-target -- gsettings set org.gnome.desktop.session idle-delay 0
     - curtin in-target -- gsettings set org.gnome.nautilus.preferences show-hidden-files true
-    - curtin in-target -- gsettings set org.gnome.shell favorite-apps ['org.gnome.Nautilus.desktop', 'gnome-terminal.desktop']
+    - curtin in-target -- gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'gnome-terminal.desktop']"
     - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-home false
     - curtin in-target -- gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
     - curtin in-target -- sudo apt -y autoremove --purge
